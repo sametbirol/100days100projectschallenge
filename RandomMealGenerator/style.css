@@ -1,0 +1,43 @@
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+}
+.consistent>p{
+    padding: 0;
+    margin: 1vh;
+    font-size: 3vh;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif    ;
+}
+.consistent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3vh;
+}
+button{
+    border: none;
+    font-size: 3vh;
+    border-radius: 1vh;
+    background-color: #F31559;
+    color:#FFECAF;
+    padding:1vh;
+}
+button:hover{
+    scale:calc(1.02);
+    cursor:pointer;
+}
+.recipe{
+    display: flex;
+    width: 80vw;
+    padding:2vh;
+    flex-wrap: wrap;
+}
+.recipe>div{
+    flex: 1 1 auto;
+    font-size:2.5vh
+}
