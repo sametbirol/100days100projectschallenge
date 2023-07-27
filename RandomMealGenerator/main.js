@@ -33,11 +33,11 @@ function randomMealGenerator(data){
     <div><h1>${data.strMeal}</h1>
     <p>${data.strInstructions}</p></div>
     <div><h2>Ingredients</h2>
-    <ol>
+    <ul>
     ${
         ingeridentList
     }
-    </ol></div>
+    </ul></div>
     ${
         youtubeSection
     }
