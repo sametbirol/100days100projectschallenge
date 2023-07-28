@@ -18,18 +18,21 @@ function randomMealGenerator(data){
     let youtubeId = data.strYoutube.replace("https://www.youtube.com/watch?v=","")
     let youtubeSection = (youtubeId == "") ? "" :
         `<div><h2>Video Recipe</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}"></iframe></div>`
+        <iframe src="https://www.youtube.com/embed/${youtubeId}"></iframe></div>`
     let ingeridentList = ""
     let i = 1;
     while(i <= 20 && data[`strIngredient${i}`] != ""){
+        let strMeasure = (data[`strMeasure${i}`] === null) ? "" : data[`strMeasure${i}`].trim()
+        let strIngredient = (data[`strIngredient${i}`] === null) ? "" : data[`strIngredient${i}`].trim()
+        let strItem = (strIngredient === "") ? "" : `${strIngredient} - ${strMeasure}`
         ingeridentList += `<li>
-        ${data[`strIngredient${i}`]} - ${data[`strMeasure${i}`]} 
+        ${strItem}
         </li>`
         i++;
     }
     let recipeContainer = document.querySelector('.recipe')
     recipeContainer.innerHTML=`
-    <img src=${data.strMealThumb} width="300px" style="border-radius:5vh"></img>
+    <img src=${data.strMealThumb} width="${window.innerWidth * 27 / 100}px" style="border-radius:${window.innerHeight * 5 / 100}px"></img>
     <div><h1>${data.strMeal}</h1>
     <p>${data.strInstructions}</p></div>
     <div><h2>Ingredients</h2>
