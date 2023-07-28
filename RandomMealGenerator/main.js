@@ -24,7 +24,7 @@ function randomMealGenerator(data){
     while(i <= 20 && data[`strIngredient${i}`] != ""){
         let strMeasure = (data[`strMeasure${i}`] === null) ? "" : data[`strMeasure${i}`].trim()
         let strIngredient = (data[`strIngredient${i}`] === null) ? "" : data[`strIngredient${i}`].trim()
-        let strItem = (strIngredient === "") ? "" : `${strIngredient} - ${strMeasure}`
+        let strItem = (strIngredient === "") ? "" : (strMeasure === "") ? `${strIngredient}` : `${strIngredient} - ${strMeasure}`
         ingeridentList += `<li>
         ${strItem}
         </li>`
