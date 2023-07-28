@@ -10,6 +10,7 @@
     padding: 0;
     margin: 1vh;
     font-size: 3vh;
+    font-weight: bold;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif    ;
 }
@@ -39,5 +40,5 @@ button:hover{
 }
 .recipe>div{
     flex: 1 1 auto;
-    font-size:2.5vh
+    font-size:3vh
 }
