@@ -21,7 +21,7 @@ function randomMealGenerator(data){
         <iframe width="${Math.min(420,window.innerWidth-50)}" height="${Math.min(270,window.innerWidth-200)}" src="https://www.youtube.com/embed/${youtubeId}" allowfullscreen></iframe></div>`
     let ingeridentList = ""
     let i = 1;
-    while(i <= 20 && data[`strIngredient${i}`] != ""){
+    while(i <= 20 && (data[`strIngredient${i}`] != "" && data[`strIngredient${i}`] != null && data[`strIngredient${i}`] != " ")){
         let strMeasure = (data[`strMeasure${i}`] === null) ? "" : data[`strMeasure${i}`].trim()
         let strIngredient = (data[`strIngredient${i}`] === null) ? "" : data[`strIngredient${i}`].trim()
         let strItem = (strIngredient === "") ? "" : (strMeasure === "") ? `${strIngredient}` : `${strIngredient} - ${strMeasure}`
