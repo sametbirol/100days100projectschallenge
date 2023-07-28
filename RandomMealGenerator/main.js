@@ -7,7 +7,7 @@ async function fetchRecipe(){
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        // console.log(result.meals[0]);
+        console.log(result.meals[0]);
         randomMealGenerator(result.meals[0])
     } catch (error) {
         console.error(error);
@@ -18,7 +18,7 @@ function randomMealGenerator(data){
     let youtubeId = data.strYoutube.replace("https://www.youtube.com/watch?v=","")
     let youtubeSection = (youtubeId == "") ? "" :
         `<div><h2>Video Recipe</h2>
-        <iframe src="https://www.youtube.com/embed/${youtubeId}"></iframe></div>`
+        <iframe width="${Math.min(420,window.innerWidth-50)}" height="${Math.min(270,window.innerWidth-200)}" src="https://www.youtube.com/embed/${youtubeId}" allowfullscreen></iframe></div>`
     let ingeridentList = ""
     let i = 1;
     while(i <= 20 && data[`strIngredient${i}`] != ""){
