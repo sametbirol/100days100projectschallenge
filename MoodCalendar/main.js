@@ -16,10 +16,14 @@ let date = new Date()
 let year = date.getFullYear()
 let container = document.querySelector('.container')
 let currentColor = "#f5f5f5"
+let isMouseDown = false
 
-function colorDay(){
+function colorDay(e){
+    if(e.type == "mouseenter" && !isMouseDown) return;
+    if(e.type == "mouseleave" && !isMouseDown) return;
     this.style.backgroundColor = currentColor
     moodMeter()
+    storeMoods()
 }
 function storeMoods(){
     let moodColors = document.querySelectorAll('.day:not(active)')
@@ -91,7 +95,6 @@ function moodMeter(){
         mood_meter.classList='mood_meter_fill'
         mood_meter_container.appendChild(mood_meter)
     }
-    storeMoods(moodColors)
 }
 
 function createCalendar(){
@@ -149,6 +152,8 @@ function createCalendar(){
     const elements = document.querySelectorAll('.day:not(.inactive)');
     elements.forEach(x => {
         x.addEventListener('click',colorDay)
+        x.addEventListener('mouseenter',colorDay)
+        x.addEventListener('mouseleave',colorDay)
     })
 }
 createCalendar()
@@ -156,3 +161,9 @@ createMood()
 getMoods()
 moodMeter()
 clearMoods()
+window.onmousedown = () => {
+    isMouseDown = true
+}
+window.onmouseup = () => {
+    isMouseDown = false
+}
