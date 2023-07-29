@@ -46,7 +46,8 @@ button:hover {
 }
 
 .inactive {
-    background-color: #DFD7BF;
+    color: #DFD7BF;
+    background-color: #F2EAD3;
 }
 
 .week_days_container {
