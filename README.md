@@ -2,6 +2,8 @@
 
 Welcome to my 100 Days 100 Projects Challenge! 🎉 This repository contains a collection of 100 small projects that I'll be working on for the next 100 days. Each project will cover various topics, technologies, and creative ideas to enhance my coding skills and have fun along the way! 💻🚀
 
+have a look at the original challenge from [Florin Pop](https://www.florin-pop.com/blog/2019/09/100-days-100-projects/)
+
 ## 🌐 Live Demo
 
 You can find the live demos and details for each project on the main hosted page:
