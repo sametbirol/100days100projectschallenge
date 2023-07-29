@@ -93,6 +93,9 @@ function moodMeter(){
         mood_meter.style.height = `2vh`;
         mood_meter.style.backgroundColor = key;
         mood_meter.classList='mood_meter_fill'
+        mood_meter.style.color="#f5f5f5"
+        mood_meter.style.textAlign="center"
+        mood_meter.innerHTML = value
         mood_meter_container.appendChild(mood_meter)
     }
 }
@@ -155,6 +158,8 @@ function createCalendar(){
         x.addEventListener('mouseenter',colorDay)
         x.addEventListener('mouseleave',colorDay)
     })
+    let header = document.querySelector('h1')
+    header.innerHTML = `${year}  ${header.innerHTML}`
 }
 createCalendar()
 createMood()
