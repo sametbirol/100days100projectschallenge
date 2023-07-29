@@ -5,12 +5,12 @@
     align-items: center;
     flex: 1 0 auto;
     flex-wrap: wrap;
-    gap: 4vh
+    gap: 40px
 }
 
 button {
     border: none;
-    font-size: 3vh;
+    font-size: 30px;
     border-radius: 100%;
     background-color: #ffffff;
     padding: 0;
@@ -30,7 +30,7 @@ button:hover {
     height: 400px;
     gap: 0;
     background: #F2EAD3;
-    border-radius: 2vh;
+    border-radius: 20px;
 }
 
 .day {
@@ -62,7 +62,7 @@ button:hover {
     text-align: center;
     width: 30px;
     color: #3F2305;
-    /* padding: 1vh; */
+    /* padding: 10px; */
 }
 
 .days_container {
@@ -78,7 +78,7 @@ button:hover {
 
 h3 {
     padding: 0;
-    margin: 1vh;
+    margin: 10px;
     grid-column-start: span 7;
     text-align: center;
     color: #3F2305;
@@ -158,8 +158,8 @@ h3 {
     background-color: #008080;
 }
 .mood_meter,.mood_meter_container{
-    height: 2vh;
-    border-radius: 3vh;
+    height: 20px;
+    border-radius: 10px;
     display: flex;
     overflow: hidden;
 }
@@ -170,6 +170,6 @@ h3 {
 .clear_mood{
     background-color: #3F2305;
     color:#F5F5F5;
-    border-radius: 2vh;
-    padding: 1vh;
+    border-radius: 20px;
+    padding: 10px;
 }
