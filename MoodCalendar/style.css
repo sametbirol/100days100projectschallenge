@@ -156,3 +156,13 @@ h3 {
     color: #ffffff;
     background-color: #008080;
 }
+.mood_meter,.mood_meter_container{
+    height: 2vh;
+    border-radius: 3vh;
+    display: flex;
+    overflow: hidden;
+}
+.mood_meter{
+    background-color: #DFD7BF;
+    width: 60%;
+}

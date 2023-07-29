@@ -19,6 +19,7 @@ let currentColor = "#f5f5f5"
 
 function colorDay(){
     this.style.backgroundColor = currentColor
+    moodMeter()
 }
 
 function createMood(){
@@ -41,6 +42,30 @@ function createMood(){
             
         })
     })
+}
+function moodMeter(){
+    let moodDict = {}
+    let mood_meter_container = document.querySelector('.mood_meter_container')
+    mood_meter_container.innerHTML = ''
+    let moodColors = document.querySelectorAll('.day:not(.inactive)')
+    moodColors.forEach(x =>{
+        if (!moodDict[x.style.backgroundColor]){
+            moodDict[x.style.backgroundColor] = 1;
+        }
+        else{
+            moodDict[x.style.backgroundColor] += 1;
+        }
+    })
+    let innerWidth =window.innerWidth
+    for(const [key,value] of Object.entries(moodDict)){
+        if(key == "" || key == "#f5f5f5") continue
+        let mood_meter = document.createElement('div')
+        mood_meter.style.width = `${innerWidth*value/365}px`;
+        mood_meter.style.height = `2vh`;
+        mood_meter.style.backgroundColor = key;
+        mood_meter.classList='mood_meter_fill'
+        mood_meter_container.appendChild(mood_meter)
+    }
 }
 function createCalendar(){
     for(let i = 0; i < 12 ; i++){
