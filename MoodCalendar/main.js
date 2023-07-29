@@ -90,12 +90,14 @@ function moodMeter(){
     for(const [key,value] of Object.entries(moodDict)){
         let mood_meter = document.createElement('div')
         mood_meter.style.width = `${innerWidth*value/365}px`;
-        mood_meter.style.height = `2vh`;
+        mood_meter.style.height = `20px`;
         mood_meter.style.backgroundColor = key;
         mood_meter.classList='mood_meter_fill'
         mood_meter.style.color="#f5f5f5"
         mood_meter.style.textAlign="center"
-        mood_meter.innerHTML = value
+        if(value > 5){
+            mood_meter.innerHTML = value
+        }
         mood_meter_container.appendChild(mood_meter)
     }
 }
