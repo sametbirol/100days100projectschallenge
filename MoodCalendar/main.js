@@ -21,6 +21,30 @@ function colorDay(){
     this.style.backgroundColor = currentColor
     moodMeter()
 }
+function storeMoods(){
+    let moodColors = document.querySelectorAll('.day:not(active)')
+    let moodDays = {}
+    moodColors.forEach(day => {
+        moodDays[`${day.getAttribute('id')}`] = day.style.backgroundColor
+    })
+    localStorage.setItem("moodDays",JSON.stringify(moodDays))
+}
+function getMoods(){
+    let moodDays = JSON.parse(localStorage.getItem("moodDays") || "{}")
+    let days = document.querySelectorAll('.day:not(.inactive)')
+    days.forEach(day =>{
+        day.style.backgroundColor = moodDays[day.getAttribute('id')] || "rgb(245, 245, 245)"
+    })
+}
+function clearMoods(){
+    let btn = document.querySelector('.clear_mood')
+    btn.addEventListener('click',()=>{
+        localStorage.removeItem("moodDays")
+        getMoods()
+        storeMoods()
+        moodMeter()
+    })
+}
 
 function createMood(){
     let moods = document.querySelectorAll('.mood')
@@ -49,16 +73,17 @@ function moodMeter(){
     mood_meter_container.innerHTML = ''
     let moodColors = document.querySelectorAll('.day:not(.inactive)')
     moodColors.forEach(x =>{
-        if (!moodDict[x.style.backgroundColor]){
-            moodDict[x.style.backgroundColor] = 1;
+        let bgColor = x.style.backgroundColor
+        if (bgColor == "" || bgColor == "rgb(245, 245, 245)") return;
+        if (!moodDict[bgColor]){
+            moodDict[bgColor] = 1;
         }
         else{
-            moodDict[x.style.backgroundColor] += 1;
+            moodDict[bgColor] += 1;
         }
     })
     let innerWidth =window.innerWidth
     for(const [key,value] of Object.entries(moodDict)){
-        if(key == "" || key == "#f5f5f5") continue
         let mood_meter = document.createElement('div')
         mood_meter.style.width = `${innerWidth*value/365}px`;
         mood_meter.style.height = `2vh`;
@@ -66,8 +91,11 @@ function moodMeter(){
         mood_meter.classList='mood_meter_fill'
         mood_meter_container.appendChild(mood_meter)
     }
+    storeMoods(moodColors)
 }
+
 function createCalendar(){
+    let id = 0;
     for(let i = 0; i < 12 ; i++){
         
         let monthCalendar = ""
@@ -90,8 +118,9 @@ function createCalendar(){
             let isToday = (d === date.getDate() && 
             i === date.getMonth()) ? 'today' : ''
             monthCalendar += `
-                <div class="day ${isToday}">${d + 1}</div>
+                <div class="day ${isToday}" id=${id}>${d + 1}</div>
             `
+            id++;
         }
         //print previous month days
         for(let d = 0; d < 6 - dayIndexOfLastDay; d++){
@@ -124,3 +153,6 @@ function createCalendar(){
 }
 createCalendar()
 createMood()
+getMoods()
+moodMeter()
+clearMoods()

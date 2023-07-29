@@ -166,3 +166,9 @@ h3 {
     background-color: #DFD7BF;
     width: 60%;
 }
+.clear_mood{
+    background-color: #3F2305;
+    color:#F5F5F5;
+    border-radius: 2vh;
+    padding: 1vh;
+}
