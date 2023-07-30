@@ -1,7 +1,7 @@
 const container = document.querySelector('.container')
 let limit = 1;
 let offset = 0;
-let i;
+let i = 0;
 const pokemonTypesColors = {
     bug: "#26de81",
     dragon: "#ffeaa7",
@@ -76,6 +76,7 @@ async function createPokemonCards() {
             pokemonCard.className += " inverse"
         }
         let index = parseInt(key) + parseInt(offset) + 1;
+        console.log(index)
         let numborOfZeros = (index < 10) ? 2 : (index < 100 ) ? 1 : 0
         let types = ""
         for (const x of value.types) {
