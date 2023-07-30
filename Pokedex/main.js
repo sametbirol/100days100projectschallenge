@@ -63,7 +63,6 @@ async function clearLS() {
     pokemonData = {}
 }
 async function createPokemonCards() {
-    console.log(pokemonData)
     container.innerHTML = ''
     let fragment = document.createDocumentFragment()
     if (Object.entries(pokemonData).length == 0) {
@@ -75,9 +74,6 @@ async function createPokemonCards() {
         if (invertColor.indexOf(value.types[0].type.name) + 1) {
             pokemonCard.className += " inverse"
         }
-        let index = parseInt(key) + parseInt(offset) + 1;
-        console.log(index)
-        let numborOfZeros = (index < 10) ? 2 : (index < 100 ) ? 1 : 0
         let types = ""
         for (const x of value.types) {
             let inverse = (invertColor.indexOf(value.types[0].type.name) + 1) ? ";color:black" : "";
@@ -109,7 +105,6 @@ async function createPokemonCards() {
                     <p>Speed</p>
                 </div>
             </div>
-            <span class="index">#${index < 100 ? "0".repeat(numborOfZeros): ""}${index}</span>
             `
         pokemonCard.style.background = `radial-gradient(circle at 50% 0%, ${value.color} 36%, #ffffff 36%)`
         fragment.appendChild(pokemonCard)
