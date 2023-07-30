@@ -63,7 +63,7 @@ async function clearLS() {
     pokemonData = {}
 }
 async function createPokemonCards() {
-    console.log(pokemonData)
+
     container.innerHTML = ''
     let fragment = document.createDocumentFragment()
     if (Object.entries(pokemonData).length == 0) {
@@ -76,7 +76,6 @@ async function createPokemonCards() {
             pokemonCard.className += " inverse"
         }
         let index = parseInt(key) + parseInt(offset) + 1;
-        console.log(index)
         let numborOfZeros = (index < 10) ? 2 : (index < 100 ) ? 1 : 0
         let types = ""
         for (const x of value.types) {
