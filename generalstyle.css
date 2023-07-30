@@ -2,7 +2,8 @@
     height: 8vh;
     width:100%;
     background-color: #4959EA;
-    border-radius: 3vh 3vh;
+    border-bottom-left-radius: 2vh;
+    border-bottom-right-radius: 2vh;
     display: flex;
     align-items: center;
     flex: 0 0 auto;
