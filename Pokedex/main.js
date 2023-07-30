@@ -1,35 +1,34 @@
 
-const offset = 0;
-const limit = 20;
+const offset = 20;
+const limit = 21;
 let i = 0;
 const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
 const pokemonTypesColors = {
-    ice: "#75C2F6",
-    bug: "#CCEEBC",
-    rock: "#EAC696",
-    ghost: "#F8E8EE",
-    dragon: "#EF6262",
-    dark: "#A78295",
-    steel: "#D8D9DA",
-    psychic: "#EAEDA1",
-    fighting: "#E6E0D4",
-    water: "#DEF3FD",
-    normal: "#E5E5E5",
-    grass: "#DEFDE0",
-    flying: "#F5F5F5",
-    fire: "#FDDFDF",
-    ground: "#F4E7DA",
-    electric: "#FCF7DE",
-    poison: "#98D7A5",
-    fairy: "#FCEAFF",
+    bug: "#26de81",
+    dragon: "#ffeaa7",
+    electric: "#fed330",
+    fairy: "#FF0069",
+    fighting: "#30336b",
+    fire: "#f0932b",
+    flying: "#81ecec",
+    grass: "#00b894",
+    ground: "#EFB549",
+    ghost: "#a55eea",
+    ice: "#74b9ff",
+    normal: "#95afc0",
+    poison: "#6c5ce7",
+    psychic: "#a29bfe",
+    rock: "#2d3436",
+    water: "#0190FF",
 };
 let pokemonData = JSON.parse(localStorage.getItem("pokedex") || "{}")
-async function handleFetch(){
-    if (pokemonData == {} || limit != Object.keys(pokemonData).length){
+async function handleFetch() {
+    if (pokemonData == {} || limit != Object.keys(pokemonData).length) {
+        localStorage.setItem("pokedex","{}")
         console.log("fetching...")
         await fetchPokedex()
     }
-    else{
+    else {
         createPokemonCards(pokemonData);
     }
 }
@@ -43,7 +42,7 @@ async function fetchPokedex() {
     // pokemonData.sort((a,b) => {
     //     return ((a.type < b.type) ? -1 : ((a.type > b.type) ? 1 : 0))
     // })
-    localStorage.setItem("pokedex",JSON.stringify(pokemonData))
+    localStorage.setItem("pokedex", JSON.stringify(pokemonData))
 
     createPokemonCards(pokemonData);
 }
@@ -57,15 +56,15 @@ async function fetchPokemon(url, name) {
         "name": name,
         "image": result.sprites.other.dream_world.front_default,
         "color": pokemonTypesColors[result.types[0].type.name],
-        "hp" :result.stats[0].base_stat,
-        "attack" :result.stats[0].base_stat,
-        "defense" :result.stats[0].base_stat,
-        "speed" :result.stats[0].base_stat,
-        "types" :result.types
+        "hp": result.stats[0].base_stat,
+        "attack": result.stats[0].base_stat,
+        "defense": result.stats[0].base_stat,
+        "speed": result.stats[0].base_stat,
+        "types": result.types
     }
     i++;
 }
-function clearLS(){
+function clearLS() {
     localStorage.removeItem("pokedex")
 }
 function createPokemonCards(pokemonData) {
@@ -73,7 +72,7 @@ function createPokemonCards(pokemonData) {
     const container = document.querySelector('.container')
     // const fragment = document.createDocumentFragment()
     console.log(pokemonData)
-    for (const [key,value] of Object.entries(pokemonData)) {
+    for (const [key, value] of Object.entries(pokemonData)) {
         const pokemonCard = document.createElement('div')
         pokemonCard.className = "pokemoncard"
         pokemonCard.style.backgroundColor = value.color;
