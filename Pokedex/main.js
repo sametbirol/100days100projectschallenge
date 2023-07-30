@@ -63,7 +63,6 @@ async function clearLS() {
     pokemonData = {}
 }
 async function createPokemonCards() {
-
     container.innerHTML = ''
     let fragment = document.createDocumentFragment()
     if (Object.entries(pokemonData).length == 0) {
