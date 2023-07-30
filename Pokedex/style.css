@@ -1,53 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
 .container {
     width: 60vw;
     display: flex;
-    /* justify-content: flex-start; */
+    justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
     align-content: flex-start;
     flex: 1 0 auto;
 }
 
-h2 {
-    font-family: Lato;
-    font-size: 15px;
-    text-transform: capitalize;
+
+.inverse>* {
+    color: #000;
+}
+
+
+
+body {
+    background-color: #eff3ff;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 250px;
+    height: 400px;
+    padding: 30px 20px;
+    margin: 30px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.card img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    margin: 20px auto;
+}
+
+.hp {
+    /* position: relative; */
+    align-self: flex-end;
+    width: 80px;
+    background-color: #ffffff;
     text-align: center;
-    font-weight: 700;
+    padding: 8px 0;
+    border-radius: 30px;
+    /* margin-left: auto; */
+    font-weight: 400;
+}
+
+.pokemon-name {
+    text-align: center;
+    font-weight: 600;
     width: 100%;
 }
 
-span,
-h2,
-small {
-    background-color: inherit;
-    filter:sepia(50%);
-    border-radius: 15px;
-    padding: 4px;
-    box-shadow: 0.1px 0.1px 3px inherit;
-    color: #ffffff;
-    box-shadow: 1px 1px 4px 0 #f5f5f5;
-    text-align: center;
-}   
-
-img {
-    background-color: inherit;
-    /* border-radius: 30px; */
-    width: 120px;
-    height: 120px;
-    /* filter: contrast(90%); */
-    margin-bottom: 20px;
-    flex: 1;
+.types {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0 10px 0;
+    width: 100%;
 }
 
-.pokemoncard {
-    width: 120px;
-    height: 220px;
-    border-radius:20px;
-    margin:10px;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    justify-content: flex-end;
-    align-items:center
+.hp span,
+.types span,
+.index {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+}
+
+.types span {
+    padding: 5px 5px;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.index {
+    padding: 2px 2px;
+    border-radius: 20px;
+    filter: contrast(50%);
+    margin-bottom: -10px;
+    margin-top: 10px;
+}
+
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+}
+
+.stats p {
+    color: hsla(240, 20%, 31%, 0.883);
+}
+
+#btn {
+    display: block;
+    padding: 15px 60px;
+    font-size: 18px;
+    background-color: #101010;
+    color: #ffffff;
+    position: relative;
+    margin: 30px auto;
+    border: none;
+    border-radius: 5px;
+}
+
+p {
+    color: hsla(240, 20%, 31%, 0.883)
 }

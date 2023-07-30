@@ -1,0 +1,72 @@
+.setting {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin: 50px; */
+  height: 15vh;
+}
+
+input[type="range"] {
+  /* -webkit-appearance: none; */
+  width: 60%;
+  appearance: none;
+  /* border: 5px solid; */
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 10px;
+  /* flex: 1 0; */
+  /* border: 2px solid black; */
+  /* width: 1000px; */
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 16px;
+  background: #ccc;
+  border-radius: 16px;
+  overflow: hidden;
+  /* border: 1px solid black; */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  /* removing default appearance */
+  appearance: none;
+  /* creating a custom design */
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #f50;
+  /*  slider progress trick  */
+  box-shadow: -608px 0 0 600px #f00;
+  /* margin-top: -1px; */
+  /* margin-left: -1px; */
+}
+
+input[type="number"] {
+  /* -webkit-appearance: none; */
+  /* appearance: none; */
+  /* border: none; */
+  height: 50%;
+  padding: 5px;
+}
+.setting > h4{
+  width:100px;
+}
+
+
+.clear {
+  /* border: none; */
+  /* padding: 20px; */
+  height: 50px;
+  width: 100px;
+  border-radius: 25px;
+}
