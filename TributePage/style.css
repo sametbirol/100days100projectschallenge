@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Holtwood+One+SC|Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sail&display=swap');
+li{
+    font-family: "Sail";
+    font-size:25px;
+}
+.italic{
+    font-family: "Roboto";
+    font-weight: 200;
+    font-style: italic;
+    opacity: 0.7;
+    font-size: 18px;
+}
+.quote{
+    font-size: 22px;
+    font-family:"Paytone One";
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+}
+.row{
+    position: relative;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    max-width: 1200px;
+    min-height: 500px;
+    height: 500px;
+}
+.row.mid{
+    min-height: 300px;
+    height: 300px;
+}
+.dark{
+    color:white;
+    background-color: #c0c0c0;
+}
+.hidden-big{
+    display: none;
+}
+.row.small{
+    min-height: 200px;
+    height: 200px;
+}
+.image{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.box{
+    width: 600px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.name,.heading,.subheading{
+    position: absolute;
+    font-family: "Holtwood One SC";
+    letter-spacing: 2px;
+    margin: 0;
+}
+.name{
+    font-size: 50px;
+    bottom: 0;
+}
+.heading{
+    font-size: 50px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.subheading{
+    font-family: 'Lora';
+    font-size: 30px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.row.mid .subheading {
+	top: 70%;
+}
+
+.box:first-of-type,.box:first-of-type .movies{
+    align-items: flex-end;
+}
+.box:last-of-type,.box:last-of-type .movies{
+    align-items: flex-start;
+}
+.box:last-of-type .movies{
+    text-align: left ;
+    padding-left: 60px;
+}
+.box:first-of-type .movies{
+    padding-right: 60px;
+    text-align: right ;
+}
+
+.box:first-of-type .name,.box:first-of-type .heading{
+    right: 10px;
+}
+.box:last-of-type .name,.box:last-of-type .heading{
+    left: 10px;
+}
+
+
+.movies{
+    list-style: none;
+    display: flex;
+    flex-direction:column;
+    width: 600px;
+    font-size: 22px;
+}
+.number{
+    color: rgba(14, 14, 160, 0.636);
+    font-size: 300px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index:-1;
+    opacity: 0.6;
+}
