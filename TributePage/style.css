@@ -1,134 +1,300 @@
 @import url('https://fonts.googleapis.com/css?family=Holtwood+One+SC|Lora&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sail&display=swap');
-li{
+@import url('https://fonts.googleapis.com/css2?family=Sail,wght@0,200&display=swap');
+
+li {
     font-family: "Sail";
-    font-size:25px;
+    font-size: 25px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: column;
 }
-.italic{
+
+.italic {
     font-family: "Roboto";
     font-weight: 200;
     font-style: italic;
     opacity: 0.7;
     font-size: 18px;
 }
-.quote{
+
+.quote {
     font-size: 22px;
-    font-family:"Paytone One";
+    font-family: "Paytone One";
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 1200px;
     justify-content: center;
     align-items: center;
 }
-.row{
+
+.row {
     position: relative;
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     align-items: center;
     max-width: 1200px;
     min-height: 500px;
     height: 500px;
 }
-.row.mid{
-    min-height: 300px;
-    height: 300px;
-}
-.dark{
-    color:white;
-    background-color: #c0c0c0;
-}
-.hidden-big{
-    display: none;
-}
-.row.small{
-    min-height: 200px;
-    height: 200px;
-}
-.image{
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.box{
+
+.box {
     width: 600px;
-    height: 100%;
+    height: 500px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
 }
-.name,.heading,.subheading{
+
+.row.mid,
+.row.mid .box {
+    min-height: 300px;
+    height: 300px;
+}
+
+.dark {
+    color: white;
+    background-color: #c0c0c0;
+}
+
+.hidden-big {
+    display: none;
+}
+
+.row.small,
+.row.small .box {
+    min-height: 200px;
+    height: 200px;
+}
+
+.image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.name,
+.heading,
+.subheading {
     position: absolute;
     font-family: "Holtwood One SC";
     letter-spacing: 2px;
     margin: 0;
+    text-align: center;
+    text-transform: uppercase;
 }
-.name{
+
+.name {
     font-size: 50px;
     bottom: 0;
 }
-.heading{
+
+.heading {
     font-size: 50px;
     top: 40%;
     transform: translateY(-50%);
 }
-.subheading{
+
+.subheading {
     font-family: 'Lora';
     font-size: 30px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    
-}
-.row.mid .subheading {
-	top: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
-.box:first-of-type,.box:first-of-type .movies{
+.row.mid .subheading {
+    top: 70%;
+}
+
+.box:first-of-type {
     align-items: flex-end;
 }
-.box:last-of-type,.box:last-of-type .movies{
+
+.box:last-of-type {
     align-items: flex-start;
 }
-.box:last-of-type .movies{
-    text-align: left ;
+
+.box:last-of-type .movies {
+    align-items: flex-start;
+    text-align: left;
     padding-left: 60px;
 }
-.box:first-of-type .movies{
+
+.box:first-of-type .movies {
+    align-items: flex-end;
     padding-right: 60px;
-    text-align: right ;
+    text-align: right;
 }
 
-.box:first-of-type .name,.box:first-of-type .heading{
+.box:first-of-type .name,
+.box:first-of-type .heading {
     right: 10px;
 }
-.box:last-of-type .name,.box:last-of-type .heading{
+
+.box:last-of-type .name,
+.box:last-of-type .heading {
     left: 10px;
 }
 
 
-.movies{
+.movies {
     list-style: none;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     width: 600px;
     font-size: 22px;
 }
-.number{
+
+.number {
     color: rgba(14, 14, 160, 0.636);
     font-size: 300px;
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    z-index:-1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
     opacity: 0.6;
+}
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 600px;
+    }
+
+    .hidden-big {
+        display: inline;
+    }
+
+    .row {
+        height: 1000px;
+        width: 600px;
+    }
+
+    .hidden-small {
+        display: none;
+    }
+
+    .heading,
+    .name {
+        width: 100%;
+        right: 0 !important;
+        left: 0 !important;
+
+    }
+
+    .box {
+        order: 2;
+        min-height: auto;
+        justify-content: center;
+    }
+
+    .box.dark {
+        order: 1;
+        min-height: 300px;
+    }
+
+    .movies {
+        text-align: center;
+        align-items: center !important;
+        padding: 0 !important;
+        gap: 20px;
+    }
+
+    li {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .row.small .box {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .row.mid .box {
+        min-height: 100px;
+    }
+
+    .row {
+        flex: 1 0 auto;
+    }
+
+    .row.mid .box {
+        height: 150px;
+    }
+
+    .row.small .box {
+        height: 100px;
+    }
+
+    .heading {
+        bottom: 40%;
+    }
+
+    .subheading {
+        width: 500px;
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .row,
+    .box,
+    .movies {
+        width: 300px;
+        height: 300px;
+        font-size: 15px;
+    }
+
+    .number {
+        font-size: 150px;
+    }
+
+    .container {
+        width: 300px;
+    }
+
+    .quote,
+    .italic,
+    li,
+    .subheading,
+    .heading,
+    .name,
+    .movies {
+        width: 300px;
+        font-size: 15px;
+        gap: 0;
+    }
+
+    .movies {
+        height: 300px;
+        justify-content: space-around;
+    }
+
+    .row {
+        height: 600px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
 }
