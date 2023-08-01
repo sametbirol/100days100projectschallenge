@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap');
+
+div.score {
+    
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+div.name {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.inner-container {
+    position: relative;
+}
+
+.gameTab {
+    max-height: 400px;
+    flex: 1 0 auto;
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.gameTab>* {
+    flex: 1;
+    min-width: 350px;
+}
+
+.expression {
+    display: inline;
+    padding-left: 20px;
+}
+
+h3 {
+    padding-left: 30px;
+    text-decoration: underline;
+    font-weight: 800;
+    font-size: 40px;
+    font-family: 'Big Shoulders Display', cursive;
+}
+li.true.last {
+    background-color: rgba(20, 203, 69, 0.751);
+}
+li.false.last {
+    background-color: rgba(201, 17, 17, 0.745);
+}
+
+li.true {
+    list-style-image: url('assests/true.svg');
+}
+
+li.false {
+    list-style-image: url('assests/false.svg');
+}
+
+.history {
+    height: 400px;
+    
+}
+ul{
+    overflow: hidden;
+}
+
+li,
+div {
+    font-size: 24px;
+}
+li{
+    transition: background 3s ease-in;
+}
+input[type="number"]{
+    height: 40px;
+    font-size: 25px;
+    width:150px
+}
+@media screen and (max-width: 1200px) {
+    h3 {
+        font-size: 35px;
+    }
+
+    li,
+    div {
+        font-size: 20px;
+    }
+    ul{
+        height: 320px;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    h3 {
+        font-size: 30px;
+    }
+    li,
+    div {
+        font-size: 16px;
+    }
+
+    ul{
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h3 {
+        font-size: 25px;
+    }
+    li,
+    div {
+        font-size: 14px;
+    }
+    ul{
+        height: 220px;
+    }
+}
