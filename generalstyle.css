@@ -42,6 +42,9 @@ a{
     text-align: center;
     
 }
+.github{
+    color:#DF714D;
+}
 a:hover{
     text-decoration: underline;
 }
