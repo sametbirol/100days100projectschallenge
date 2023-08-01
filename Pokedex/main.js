@@ -108,14 +108,11 @@ async function createPokemonCards() {
                 </div>
             </div>
             <span class="index">#${index < 100 ? "0".repeat(numborOfZeros): ""}${index}</span>
-            <span><button class="download" id="${key}">PNG</button></span>
             `
-        pokemonCard.setAttribute("id",key)
         pokemonCard.style.background = `radial-gradient(circle at 50% 0%, ${value.color} 36%, #ffffff 36%)`
         fragment.appendChild(pokemonCard)
     }
     container.appendChild(fragment)
-    downloadbuttons()
 }
 
 
