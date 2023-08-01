@@ -22,3 +22,6 @@
     cursor: pointer;
     scale: 1.02;
 }
+.listitem a{
+    color:#DF714D;
+}
