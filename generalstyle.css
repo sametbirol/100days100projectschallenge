@@ -19,9 +19,13 @@ body{
     align-items: center;
     gap:3vh;
 }
+body::-webkit-scrollbar{
+    display: none;
+}
+
 #footer{
     height: 6vh;
-    width:100vw;
+    width:50vw;
     display: flex;
     justify-content: center;
     align-items: center;
