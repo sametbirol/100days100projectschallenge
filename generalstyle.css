@@ -25,10 +25,13 @@ body::-webkit-scrollbar{
 
 #footer{
     height: 6vh;
-    width:50vw;
+    width:20vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: azure;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
     flex: 0 0 auto;
 }
 .base-anchor{
