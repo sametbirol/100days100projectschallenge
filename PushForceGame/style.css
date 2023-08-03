@@ -60,3 +60,6 @@ button{
     /* display: block */
     display: none;
 }
+canvas{
+    background-color: black;
+}

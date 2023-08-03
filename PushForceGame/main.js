@@ -48,23 +48,18 @@ class SpaceShip {
             this.image = image;
             this.width = image.width * scale;
             this.height = image.height * scale;
-            this.position = {
-                x: canvas.width / 2,
-                y: canvas.height / 2,
-            };
-            this.velocity = {
-                x: -3 + Math.random() * 6,
-                y: -3 + Math.random() * 6,
-            };
-            this.force = {
-                x: 0,
-                y: 0,
-            };
-            this.lastForce = {
-                x: 0,
-                y: 0
-            }
+            this.position = { x: canvas.width / 2, y: canvas.height / 2 };
+            this.velocity = getRandomVelocity();
+            this.force = { x: 0, y: 0 };
         };
+
+        function getRandomVelocity() {
+            const min = -3;
+            const max = 3;
+            const randomX = min + Math.random() * (max - min);
+            const randomY = min + Math.random() * (max - min);
+            return { x: randomX, y: randomY };
+        }
     }
 
     draw() {
@@ -105,84 +100,71 @@ class SpaceShip {
                 // Update score
                 score += consumable.score;
 
-                const newConsumable = {
-                    x: Math.random() * canvas.width,
-                    y: 125 + Math.random() * (canvas.height - 250),
-                    radius: 10,
-                    color: consumable.color,
-                    score: consumable.score
-                };
-                consumables.push(newConsumable);
-                // Remove consumed consumable
-                consumables.splice(i, 1);
+                consumable.x = Math.random() * canvas.width
+                consumable.y = 125 + Math.random() * (canvas.height - 250)
             }
         }
     }
 
     limitProp(obj, limiter) {
-
-        let oX = obj.x;
-        let oY = obj.y;
-        obj.x = (oX > limiter) ? limiter : (oX < -limiter) ? -limiter : oX;
-        obj.y = (oY > limiter) ? limiter : (oY < -limiter) ? -limiter : oY;
+        obj.x = (obj.x > limiter) ? limiter : (obj.x < -limiter) ? -limiter : obj.x;
+        obj.y = (obj.y > limiter) ? limiter : (obj.y < -limiter) ? -limiter : obj.y;
     }
 
 
     calculateForce(distance, obj) {
         const maxForce = 0.2;
-        const minDistance = 120;
         const bounceFactor = 0.1;
-        const forceX = (1 / distance) * (this.position.x - obj.position.x) * bounceFactor;
-        const forceY = (1 / distance) * (this.position.y - obj.position.y) * bounceFactor;
+
+        const dx = this.position.x - obj.position.x;
+        const dy = this.position.y - obj.position.y;
+        const inverseDistance = 1 / distance;
+
+        const forceX = inverseDistance * dx * bounceFactor;
+        const forceY = inverseDistance * dy * bounceFactor;
+
         this.force.x = Math.min(maxForce, Math.max(-maxForce, forceX));
         this.force.y = Math.min(maxForce, Math.max(-maxForce, forceY));
     };
-    calculateAngletoRotate(obj) {
-        let distancetoobj = this.distance(obj);
-        if (!(distancetoobj < 150 && distancetoobj > 30)) {
-            return;
-        }
-        let vectorToObj = {
-            x: obj.position.x - this.position.x,
-            y: obj.position.y - this.position.y,
-        }
-        //divide it to distance
-        //rotate the velocity
-        //calculate angle inbetween two vectors
-        let velX = this.velocity.x
-        let velY = this.velocity.y
-        let angle = Math.atan2(velY, velX) - Math.atan2(vectorToObj.y, vectorToObj.x);
-        let angleabs = Math.abs(angle);
-        //calcute if it should be counterclockwise
-        if (angleabs < 2 * Math.PI / 8 || angleabs > 13 * Math.PI / 16) {
-            this.calculateForce(distancetoobj, obj)
-            return
+calculateAngletoRotate(obj) {
+    let distanceToObj = Math.hypot((obj.position.x - this.position.x), (obj.position.y - this.position.y));
 
-        }
-
-
-        angle /= distancetoobj / Math.hypot(this.velocity.x, this.velocity.y)
-        this.velocity.x = velX * Math.cos(angle) - velY * Math.sin(angle);
-        this.velocity.y = velX * Math.sin(angle) + velY * Math.cos(angle);
+    if (distanceToObj >= 150 || distanceToObj <= 30) {
+        return;
     }
+
+    let vectorToObj = {
+        x: obj.position.x - this.position.x,
+        y: obj.position.y - this.position.y,
+    }
+
+    let velX = this.velocity.x;
+    let velY = this.velocity.y;
+
+    let angle = Math.atan2(velY, velX) - Math.atan2(vectorToObj.y, vectorToObj.x);
+    let angleAbs = Math.abs(angle);
+
+    if (angleAbs < 2 * Math.PI / 8 || angleAbs > 13 * Math.PI / 16) {
+        this.calculateForce(distanceToObj, obj);
+        return;
+    }
+
+    angle /= distanceToObj / Math.hypot(this.velocity.x, this.velocity.y);
+
+    this.velocity.x = velX * Math.cos(angle) - velY * Math.sin(angle);
+    this.velocity.y = velX * Math.sin(angle) + velY * Math.cos(angle);
+}
 
     checkCorners() {
-        let cX = this.position.x
-        let cY = this.position.y
-        this.position.x = cX < 0 ? canvas.width : cX > canvas.width ? 0 : cX
-        this.position.y = cY < 0 ? canvas.height : cY > canvas.height ? 0 : cY
+        const { x, y } = this.position;
+        const { width, height } = canvas;
+
+        this.position.x = x < 0 ? width : x > width ? 0 : x;
+        this.position.y = y < 0 ? height : y > height ? 0 : y;
     }
 
-    distance(obj) {
-        return Math.floor(Math.sqrt((obj.position.x - this.position.x) * (obj.position.x - this.position.x) +
-            (obj.position.y - this.position.y) * (obj.position.y - this.position.y)))
-
-    };
-
-    vectorSetZero(v) { v.x = v.y = 0; }
-
-    vectorCheckZero(v) {
-        return v.x == 0 && v.y == 0;
+    vectorSetZero(v) {
+        v.x = v.y = 0;
     }
 }
 class Circle {
@@ -193,13 +175,12 @@ class Circle {
             x: 0,
             y: 0
         }
-        this.image = document.createElement('div.circle')
 
     }
     createCircle(x, y, radius) {
+        c.fillStyle = 'white';
         c.beginPath();
         c.arc(x, y, radius, 0, 2 * Math.PI, false);
-        c.fillStyle = 'white';
         c.fill();
     }
     updatePosition(e) {
@@ -214,28 +195,23 @@ class Circle {
 const ship = new SpaceShip();
 const circle = new Circle();
 function animate() {
-    requestAnimationFrame(animate)
-    c.fillStyle = 'black';
-    c.fillRect(0, 0, canvas.width, canvas.height);
-    if (ship.image == undefined) return
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    if (ship.image === undefined) return;
     scoreDiv.innerHTML = `Score : ${score}`;
     ship.draw();
     ship.updatePosition();
     ship.checkCorners();
-    circle.draw()
+    circle.draw();
     ship.calculateAngletoRotate(circle);
-    ship.applyForce()
-    for (let i = 0; i < consumables.length; i++) {
-        const consumable = consumables[i];
-
+    ship.applyForce();
+    consumables.forEach((consumable) => {
         c.beginPath();
         c.arc(consumable.x, consumable.y, consumable.radius, 0, Math.PI * 2);
         c.fillStyle = consumable.color;
         c.fill();
-    }
-    ship.checkCollision()
-
-    // ship.calculateForce(circle)
+    });
+    ship.checkCollision();
 }
 window.addEventListener('mousemove', (e) => {
     circle.updatePosition(e)
