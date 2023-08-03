@@ -87,7 +87,7 @@ class SpaceShip {
     }
 
     applyForce() {
-        this.limitProp(this.velocity, 3);
+        this.limitProp(this.velocity, 4);
         this.velocity.x += this.force.x
         this.velocity.y += this.force.y
         this.vectorSetZero(this.force)
@@ -132,10 +132,10 @@ class SpaceShip {
         const maxForce = 0.2;
         const minDistance = 120;
         const bounceFactor = 0.1;
-        const forceX = (1/distance) * (this.position.x - obj.position.x) * bounceFactor;
-        const forceY = (1/distance) * (this.position.y - obj.position.y) * bounceFactor;
+        const forceX = (1 / distance) * (this.position.x - obj.position.x) * bounceFactor;
+        const forceY = (1 / distance) * (this.position.y - obj.position.y) * bounceFactor;
         this.force.x = Math.min(maxForce, Math.max(-maxForce, forceX));
-        this.force.y = Math.min(maxForce, Math.max(-maxForce, forceY)); 
+        this.force.y = Math.min(maxForce, Math.max(-maxForce, forceY));
     };
     calculateAngletoRotate(obj) {
         let distancetoobj = this.distance(obj);
@@ -151,27 +151,17 @@ class SpaceShip {
         //calculate angle inbetween two vectors
         let velX = this.velocity.x
         let velY = this.velocity.y
-        let dotproduct = vectorToObj.x * velX + vectorToObj.y * velY;
-        let distance = Math.sqrt(vectorToObj.x * vectorToObj.x + vectorToObj.y * vectorToObj.y)
-        let velocitylength = Math.sqrt(velX * velX + velY * velY)
-        let angle = Math.acos(dotproduct / (distance * velocitylength))
-
+        let angle = Math.atan2(velY, velX) - Math.atan2(vectorToObj.y, vectorToObj.x);
+        let angleabs = Math.abs(angle);
         //calcute if it should be counterclockwise
-        if (angle < 3 * Math.PI / 16|| angle > 3 * Math.PI / 16) {
+        if (angleabs < 2 * Math.PI / 8 || angleabs > 13 * Math.PI / 16) {
             this.calculateForce(distancetoobj, obj)
             return
 
         }
-        //
-        let vecX = vectorToObj.x;
-        let vecY = vectorToObj.y;
-        vectorToObj.x = vecX * Math.cos(angle) - vecY * Math.sin(angle);
-        vectorToObj.y = vecX * Math.sin(angle) + vecY * Math.cos(angle);
-        if (Math.abs(this.velocity.y / this.velocity.x - vectorToObj.y / vectorToObj.x) > 1) {
-            angle *= -1
-        }
 
-        angle /= distance / Math.hypot(this.velocity.x, this.velocity.y)
+
+        angle /= distancetoobj / Math.hypot(this.velocity.x, this.velocity.y)
         this.velocity.x = velX * Math.cos(angle) - velY * Math.sin(angle);
         this.velocity.y = velX * Math.sin(angle) + velY * Math.cos(angle);
     }
