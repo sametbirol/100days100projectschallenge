@@ -16,6 +16,11 @@ addMenu(document.body)
 const formMenu = document.querySelector('.menu')
 const form = document.querySelector('form')
 const seperate = document.querySelector('.seperate')
+const resubmitBtn  = document.querySelector('.resubmit > button')
+resubmitBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    handleUpdate()
+})
 wrapper.addEventListener('click', (e) => {
     e.preventDefault();
     wrapper.classList.toggle('active');
@@ -117,11 +122,15 @@ function addMenu(el) {
     seperateDiv.appendChild(seperateSelect);
     seperateDiv.className = "seperate";
 
+    const resubmitDiv = document.createElement('div');
+    resubmitDiv.className = "resubmit";
+    resubmitDiv.innerHTML = '<button>Resubmit</button>';
+
     form.appendChild(checkboxDiv);
     form.appendChild(countDiv);
     form.appendChild(colorDiv);
     form.appendChild(seperateDiv);
-    
+    form.appendChild(resubmitDiv);
     menu.appendChild(form);
 
     el.appendChild(menu);
