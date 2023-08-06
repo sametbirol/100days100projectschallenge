@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PasswordGenerator</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../generalstyle.css">
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <form>
+            <div><h2>Password Generator</h2></div>
+            <div ><div class="result"></div><button class="copy"><img src="./assets/clipboard-outline.svg"></button></div>
+            <div><div>Password Length</div><input type="number" max="20" min="4" value="8" id="count"></div>
+            <div><div>Include uppercase letters</div><input type="checkbox" id="uppercase" checked></div>
+            <div><div>Include lowercase letters</div><input type="checkbox" id="lowercase" checked></div>
+            <div><div>Include numbers</div><input type="checkbox" id="numbers" checked></div>
+            <div><div>Include symbols</div><input type="checkbox" id="symbols" checked></div>
+            <div><button class="generate">Generate</button></div>
+        </form>
+    </div>
+    <div id="footer"></div>
+    <script src="main.js" type="text/javascript"></script>
+    <!-- <script src="colormeter.js" type="text/javascript"></script> -->
+    <!-- <script src="bounce.js" type="text/javascript"></script> -->
+    <script src="../generaljs.js" type="text/javascript"></script>
+</body>
+
+</html>
