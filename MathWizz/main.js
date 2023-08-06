@@ -59,12 +59,6 @@ function initializeReferences() {
         validate()
     })
 }
-
-function startthegame() {
-    nameInput.value = "secyo"
-    submitBtn.click()
-}
-startthegame()
 function getExpression() {
 
     obj["a"] = obj.difficulty * obj.multip + Math.ceil(Math.random() * obj.multip);
