@@ -60,3 +60,7 @@ form > div:nth-child(2){
 checkbox:checked{
     background-color: black;
 }
+.result{
+    width:250px;
+    overflow: hidden;
+}
