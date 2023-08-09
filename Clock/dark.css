@@ -1,0 +1,17 @@
+body.dark{
+    background-color: black;
+}
+.mode.dark{
+    background-color: whitesmoke;
+    color:black;
+}
+.minute.dark,.hour.dark,.inner_circle.dark{
+    background-color: whitesmoke;
+}
+.date.dark > #day_number{
+    background-color: whitesmoke;
+    color:black;
+}
+.time.dark,.date.dark{
+    color: whitesmoke;
+}
