@@ -29,6 +29,7 @@ function setUp(){
     let commentatorsList = []
     cname.innerHTML = commentators[0].author
     container.style.backgroundColor = commentators[0].color
+    container.style.boxShadow = `0px 40px 10px -20px ${commentators[0].color}`
     for(let i = 0; i < 5;i++){
         let el = document.createElement('div')
         el.className = "profile"
@@ -59,6 +60,7 @@ function addFunctionality(){
             })
             let i = x.dataset.index
             container.style.backgroundColor = commentators[i].color
+            container.style.boxShadow = `0px 40px 10px -20px ${commentators[i].color}`
             cname.innerHTML = commentators[i].author
             comment.innerHTML = commentators[i].comment
 

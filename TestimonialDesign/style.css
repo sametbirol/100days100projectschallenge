@@ -7,9 +7,6 @@
 .container {
     /* box-sizing: border-box; */
     padding: 80px;
-    border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     font-family: 'Mulish', sans-serif;
     display: flex;
     flex-direction: column;
